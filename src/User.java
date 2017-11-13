@@ -22,9 +22,9 @@ public class User {
 	reviewer = false;
 	admin = false;
 }
-	
-	public User(int id, String username, String password, String firstName, String lastName, String phone, String email,
-			    boolean reviewer, boolean admin) {
+	public User(int id, String username, String password, String firstName, String lastName, 
+			    String phone, String email, boolean reviewer, boolean admin) {
+		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
@@ -35,7 +35,19 @@ public class User {
 		this.reviewer = reviewer;
 		this.admin = admin;
 	}
-
+	
+	public User (String username, String password, String firstName, String lastName,
+                 String phone, String email, boolean reviewer, boolean admin){
+		setUsername(username);
+		setPassword(password);
+		setFirstName(firstName);
+		setLastName(lastName);
+		setPhone(phone);
+		setEmail(email);
+		setReviewer(reviewer);
+		setAdmin(admin);	
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -108,11 +120,23 @@ public class User {
 		this.admin = admin;
 	}
 	
-//	@Override
-	public String toString(int id, String username, String password, String firstName, String lastName, 
-			               String phone, String email, boolean reviewer, boolean admin) {
+	@Override
+	public String toString() {
 		return "User= [id=" + id + ", username=" + username + ", password=" + password + 
-				    ", firstName=" + firstName + ", lastName=" + lastName + ", phone=" + phone + 
-				    ", email=" + email + ", reviewer=" + reviewer + ", admin=" + admin + "]";
+			        ", firstName=" + firstName + ", lastName=" + lastName + ", phone=" + phone + 
+				    ", email=" + email + ", reviewer=" + reviewer + ", admin=" + admin + 
+				    "]\nSuper.toString() = "+super.toString();
+	}
+	
+	public String buildDisplayText() {//Just shows that either the variable or the getX method works
+		return "id:\t\t" + id + "\n" + 
+               "username:\t" + getUsername() + "\n" + 
+	           "password:\t" + password + "\n" +
+               "firstname:\t" + getFirstName() + "\n" +
+	           "lastname:\t" + lastName + "\n" +
+               "phone:\t\t" + getPhone() + "\n" +
+	           "email:\t\t" + getEmail() + "\n" +
+               "reviewer:\t" + isReviewer() + "\n" +
+	           "admin:\t\t" + isAdmin() + "\n";
 	}
 }
